@@ -7,7 +7,6 @@ const StyledTitle = styled.h1`
   overflow-wrap: break-word;
   width: 100%;
   min-height: 68px;
-  margin-top: 64px;
   margin-bottom: 24px;
 `;
 
