@@ -1,15 +1,18 @@
 import { FC } from "react";
 import Title from "./Title/Title";
 import { GlobalContainer } from "../../styles";
+import StyledInner from "./Text.styles";
+import Subtitle from "./Subtitle/Subtitle";
 
 const Text: FC = (): JSX.Element => {
   return (
     <>
       <section>
         <GlobalContainer>
-          <div>
+          <StyledInner>
             <Title />
-          </div>
+            <Subtitle />
+          </StyledInner>
         </GlobalContainer>
       </section>
     </>
