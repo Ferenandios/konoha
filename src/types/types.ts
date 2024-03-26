@@ -3,6 +3,7 @@ export interface IPost {
   id: number;
   title: string;
   body: string;
+  image: string;
 }
 
 export interface IState {
