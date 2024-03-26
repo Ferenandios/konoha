@@ -13,6 +13,12 @@ export const GlobalStyle = createGlobalStyle`
   h1, h3 {
     font-weight: 700;
   }
+
+  p {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+  }
   
 `;
 export const GlobalContainer = styled.div`
