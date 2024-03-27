@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { type IContentProps } from "../../../../types/types";
 import { StyledInner } from "./Content.styles";
 import Title from "./Title/Title";
+import Subtitle from "./Subtitle/Subtitle";
 
 const Content: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
       <StyledInner>
         <Title postId={postId} />
+        <Subtitle postId={postId} />
       </StyledInner>
     </>
   );
