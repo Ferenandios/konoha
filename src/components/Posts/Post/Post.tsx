@@ -4,12 +4,12 @@ import Image from "./Image/Image";
 import { type IPost } from "../../../types/types";
 import Content from "./Content/Content";
 
-const Post: FC<{ post: IPost }> = ({ post }): JSX.Element => {
+const Post: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
       <StyledInner>
-        <Image image={post.image} />
-        <Content body={post.body} title={post.title} rates={post.rates} />
+        <Image postId={postId} />
+        <Content postId={postId} />
       </StyledInner>
     </>
   );
