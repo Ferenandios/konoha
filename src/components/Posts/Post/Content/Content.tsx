@@ -3,11 +3,11 @@ import { type IContentProps } from "../../../../types/types";
 import { StyledInner } from "./Content.styles";
 import Title from "./Title/Title";
 
-const Content: FC<IContentProps> = ({ title, rates }): JSX.Element => {
+const Content: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
       <StyledInner>
-        <Title title={title} rates={rates} />
+        <Title postId={postId} />
       </StyledInner>
     </>
   );
