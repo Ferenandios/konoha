@@ -8,8 +8,8 @@ const Rate: FC<{ type: "likes" | "dislikes"; count: number }> = ({
   return (
     <>
       <RateInner>
-        <RateButton type={type}>
-          <RateImage />
+        <RateButton>
+          <RateImage type={type} />
         </RateButton>
         <RateCount>{count}</RateCount>
       </RateInner>
