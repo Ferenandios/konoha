@@ -5,6 +5,7 @@ export const StyledInner = styled.div`
   justify-content: space-between;
   width: 100%;
   min-height: 32px;
+  margin-bottom: 32px;
 `;
 
 export const StyledTitle = styled.h3`
