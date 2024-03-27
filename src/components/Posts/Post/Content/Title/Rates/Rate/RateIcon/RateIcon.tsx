@@ -4,7 +4,7 @@ import { type userRateType } from "../../../../../../../../types/types";
 
 const RateIcon: FC<{
   type: "likes" | "dislikes";
-  userRate: userRateType;
+  userRate: userRateType | undefined;
 }> = ({ type, userRate }): JSX.Element => {
   return (
     <StyledSVG
