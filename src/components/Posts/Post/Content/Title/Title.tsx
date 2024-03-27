@@ -8,8 +8,8 @@ const Title: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
       <StyledInner>
-        <StyledTitle>{title}</StyledTitle>
-        <Rates postId={postId} />
+        <StyledTitle index={postId}>{title}</StyledTitle>
+        {!postId && <Rates postId={postId} />}
       </StyledInner>
     </>
   );
