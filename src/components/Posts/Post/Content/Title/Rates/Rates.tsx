@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { StyledInner } from "./Rates.styles";
-import { type IRates } from "../../../../../../types/types";
+import { IRates } from "../../../../../../types/types";
 import Rate from "./Rate/Rate";
+
+const getRandomNumber = () => Math.floor(Math.random() * 51);
 
 const Rates: FC<{ rates: IRates }> = ({ rates }): JSX.Element => {
   return (
@@ -14,8 +16,8 @@ const Rates: FC<{ rates: IRates }> = ({ rates }): JSX.Element => {
           </>
         ) : (
           <>
-            <Rate type="likes" count={51} />
-            <Rate type="dislikes" count={51} />
+            <Rate type="likes" count={getRandomNumber()} />
+            <Rate type="dislikes" count={getRandomNumber()} />
           </>
         )}
       </StyledInner>
