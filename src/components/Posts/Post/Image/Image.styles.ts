@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ImageAnsoc = styled.div`
   width: 100%;
   height: 600px;
-  background-color: lime;
+  background-color: #dddddd;
 `;
 
 export const PostImage = styled.img.attrs<{ image: string }>((props) => ({
