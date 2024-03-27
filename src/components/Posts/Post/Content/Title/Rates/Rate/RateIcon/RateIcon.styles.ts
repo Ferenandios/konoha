@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
-import { userRateType } from "../../../../../../../../types/types";
 
 export const StyledSVG = styled.svg<{
   type: "likes" | "dislikes";
-  userRate: userRateType;
+  userRate: string;
 }>`
   position: relative;
   fill: ${(props) => {
