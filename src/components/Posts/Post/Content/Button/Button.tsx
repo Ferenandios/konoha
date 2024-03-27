@@ -9,7 +9,7 @@ const Button: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
       <ButtonInner onMouseUp={handleMouseUp} index={postId}>
-        {postId && <Rates postId={postId} />}
+        {postId > 0 && <Rates postId={postId} />}
         <StyledButton>Читать далее</StyledButton>
       </ButtonInner>
     </>
