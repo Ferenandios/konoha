@@ -9,8 +9,8 @@ const Content: FC<{ postId: number }> = ({ postId }): JSX.Element => {
     <>
       <StyledInner>
         <Title postId={postId} />
-        <Subtitle postId={postId} />
-        <Button />
+        {!postId && <Subtitle postId={postId} />}
+        <Button postId={postId} />
       </StyledInner>
     </>
   );
