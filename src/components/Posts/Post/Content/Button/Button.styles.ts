@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const ButtonAnsoc = styled.div`
+export const ButtonInner = styled.div<{ index: number }>`
   display: flex;
-  justify-content: end;
+  justify-content: ${(props) => (!props.index ? "end" : "space-between")};
   width: 100%;
   height: 45px;
 `;
