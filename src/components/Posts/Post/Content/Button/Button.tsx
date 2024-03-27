@@ -1,15 +1,17 @@
 import { FC } from "react";
-import { ButtonAnsoc, StyledButton } from "./Button.styles";
+import { ButtonInner, StyledButton } from "./Button.styles";
+import Rates from "../Title/Rates/Rates";
 
-const Button: FC = (): JSX.Element => {
+const Button: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   const handleMouseUp = () => {
     alert(true);
   };
   return (
     <>
-      <ButtonAnsoc onMouseUp={handleMouseUp}>
+      <ButtonInner onMouseUp={handleMouseUp} index={postId}>
+        {postId && <Rates postId={postId} />}
         <StyledButton>Читать далее</StyledButton>
-      </ButtonAnsoc>
+      </ButtonInner>
     </>
   );
 };
