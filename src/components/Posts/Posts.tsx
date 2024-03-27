@@ -11,8 +11,8 @@ const Posts: FC = (): JSX.Element => {
       <section>
         <GlobalContainer>
           <StyledInner>
-            {posts.map((post) => (
-              <Post key={post.id} postId={post.id} />
+            {posts.map((post, index) => (
+              <Post key={post.id} postId={index} />
             ))}
           </StyledInner>
         </GlobalContainer>
