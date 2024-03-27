@@ -5,6 +5,9 @@ export const RateInner = styled.div`
   align-items: center;
   height: 32px;
   margin-left: 24px;
+  &:first-child {
+    margin-left: 0;
+  }
 `;
 
 export const RateButton = styled.button`
