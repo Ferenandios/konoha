@@ -11,4 +11,9 @@ export const StyledTitle = styled.h3`
   font-size: 28px;
   line-height: 32px;
   max-width: 959px;
+  min-height: 32px;
+  max-height: 64px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
