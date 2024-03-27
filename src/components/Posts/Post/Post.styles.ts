@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const StyledInner = styled.div`
+export const StyledInner = styled.div<{ index: number }>`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-content: flex-start;
+  width: ${(props) => (!props.index ? "100%" : "558px")};
   margin-bottom: 10px;
   border: 1px solid #f4f4f4;
   border-radius: 12px;
