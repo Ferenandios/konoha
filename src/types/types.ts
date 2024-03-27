@@ -10,9 +10,9 @@ export interface IPost {
   id: number;
   title: string;
   body: string;
-  image: string;
-  rates: IRates;
-  userRate: userRateType;
+  image?: string;
+  rates?: IRates;
+  userRate?: userRateType;
 }
 
 export interface IState {
