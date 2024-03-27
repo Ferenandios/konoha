@@ -5,9 +5,10 @@ export const RateInner = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
+  margin-left: 24px;
 `;
 
-export const RateButton = styled.button<{ type: "likes" | "dislikes" }>`
+export const RateButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,18 +16,16 @@ export const RateButton = styled.button<{ type: "likes" | "dislikes" }>`
   height: 32px;
   background: none;
   border: none;
-  transform: ${(props) =>
-    props.type === "likes" ? "rotate(0deg)" : "rotate(180deg)"};
-  ${(props) => (props.type === "dislikes" ? " scaleX(-1)" : "")};
 `;
-
-/* IN OTHER WAY TRY TO MIRROR THAT SHIT AS FUCK  */
 
 export const RateImage = styled.img.attrs({
   src: RateAsset,
-})`
+})<{ type: "likes" | "dislikes" }>`
+  position: relative;
+  top: ${(props) => (props.type === "dislikes" ? "2px" : "")};
   width: 26.67px;
   height: 24px;
+  transform: ${(props) => (props.type === "dislikes" ? "scaleY(-1)" : "")};
 `;
 
 export const RateCount = styled.span`
