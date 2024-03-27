@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import RateAsset from "/src/assets/Rate.svg?react";
 
 export const RateInner = styled.div`
   display: flex;
@@ -16,16 +15,6 @@ export const RateButton = styled.button`
   height: 32px;
   background: none;
   border: none;
-`;
-
-export const RateImage = styled.img.attrs({
-  src: RateAsset,
-})<{ type: "likes" | "dislikes" }>`
-  position: relative;
-  top: ${(props) => (props.type === "dislikes" ? "2px" : "")};
-  width: 26.67px;
-  height: 24px;
-  transform: ${(props) => (props.type === "dislikes" ? "scaleY(-1)" : "")};
 `;
 
 export const RateCount = styled.span`
