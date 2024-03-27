@@ -6,7 +6,7 @@ import { StyledInner } from "./Post.styles";
 const Post: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
     <>
-      <StyledInner>
+      <StyledInner index={postId}>
         <Image postId={postId} />
         <Content postId={postId} />
       </StyledInner>
