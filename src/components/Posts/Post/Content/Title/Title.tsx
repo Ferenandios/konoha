@@ -1,17 +1,16 @@
 import { FC } from "react";
 import { StyledInner, StyledTitle } from "./Title.styles";
 import Rates from "./Rates/Rates";
-import { type IRates } from "../../../../../types/types";
+import { IPostTitleProps } from "../../../../../types/types";
+import { useAppSelector } from "../../../../../hooks";
 
-const Title: FC<{ title: string; rates: IRates }> = ({
-  title,
-  rates,
-}): JSX.Element => {
+const Title: FC<{ postId: number }> = ({ postId }): JSX.Element => {
+  const { title } = useAppSelector((state) => state.posts.posts[postId]);
   return (
     <>
       <StyledInner>
         <StyledTitle>{title}</StyledTitle>
-        <Rates rates={rates} />
+        <Rates postId={postId} />
       </StyledInner>
     </>
   );
