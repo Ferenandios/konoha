@@ -1,8 +1,7 @@
 import { FC } from "react";
-import { StyledInner } from "../Posts.styles";
 import Image from "./Image/Image";
-import { type IPost } from "../../../types/types";
 import Content from "./Content/Content";
+import { StyledInner } from "./Post.styles";
 
 const Post: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   return (
