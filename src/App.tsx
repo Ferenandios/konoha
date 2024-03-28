@@ -2,6 +2,7 @@ import { FC } from "react";
 import BlogPage from "./components/BlogPage";
 import { useAppSelector } from "./hooks";
 import { GlobalStyle } from "./styles";
+import PostPage from "./components/PostPage/PostPage";
 
 const App: FC = (): JSX.Element => {
   const { showedPage } = useAppSelector((state) => state.posts);
@@ -9,6 +10,7 @@ const App: FC = (): JSX.Element => {
     <>
       <GlobalStyle />
       {showedPage === "blog" && <BlogPage />}
+      {showedPage === "post" && <PostPage />}
     </>
   );
 };
