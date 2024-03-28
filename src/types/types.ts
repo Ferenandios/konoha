@@ -1,6 +1,6 @@
 export interface IRates {
-  likes: number;
-  dislikes: number;
+  liked: number;
+  disliked: number;
 }
 
 export type userRateType = "liked" | "disliked" | null;
