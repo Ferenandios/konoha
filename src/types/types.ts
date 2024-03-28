@@ -17,6 +17,7 @@ export interface IPost {
 
 export interface IState {
   posts: IPost[];
+  showedPage: "blog" | "post";
 }
 
 export interface IContentProps {
