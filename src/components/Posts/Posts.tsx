@@ -1,12 +1,16 @@
-import { FC } from "react";
-import { useAppSelector } from "../../hooks";
+import { FC, useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { GlobalContainer } from "../../styles";
 import { PostColumn, PostColumns, StyledInner } from "./Posts.styles";
 import Post from "./Post/Post";
+import { getPosts } from "../../features/posts.slice";
 
 const Posts: FC = (): JSX.Element => {
-  const { posts } = useAppSelector((state) => state.posts);
-  const columns = ((): number[][] => {
+  const dispatch = useAppDispatch();
+  const { posts } = useAppSelector((state) => state).posts;
+  const [columns, setColumns] = useState<number[][]>([]);
+  const getColumns = () => {
+    if (!posts) return [[1], [1]];
     const oddNumbers: number[] = [];
     const evenNumbers: number[] = [];
 
@@ -17,15 +21,20 @@ const Posts: FC = (): JSX.Element => {
         evenNumbers.push(i);
       }
     }
-
-    return [oddNumbers, evenNumbers];
-  })();
+    setColumns([oddNumbers, evenNumbers]);
+  };
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
+  useEffect(() => {
+    getColumns();
+  }, [posts]);
   return (
     <>
       <section>
         <GlobalContainer>
           <StyledInner>
-            <Post postId={0} />
+            {posts.length && <Post postId={0} />}
             <PostColumns>
               {columns.map((column, index) => (
                 <PostColumn key={index}>
