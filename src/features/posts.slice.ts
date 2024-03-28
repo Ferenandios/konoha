@@ -1,7 +1,11 @@
-import { userRateType } from "./../types/types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { type IPost, type IState } from "../types/types";
 import axios from "axios";
+import {
+  type userRateType,
+  type IPost,
+  type IState,
+  type showedPageType,
+} from "../types/types";
 
 export const getPosts = createAsyncThunk(
   "posts/getPosts",
@@ -14,7 +18,7 @@ export const getPosts = createAsyncThunk(
 
 const initialState: IState = {
   posts: [],
-  showedPage: "blog",
+  showedPage: "post",
 };
 
 const postsSlice = createSlice({
@@ -55,9 +59,17 @@ const postsSlice = createSlice({
         liked: getRandomNumber(),
       };
     },
+    setShowedPage: (state, action: PayloadAction<showedPageType>) => {
+      state.showedPage = action.payload;
+    },
   },
 });
 
 export default postsSlice.reducer;
-export const { setPosts, setPostUserRate, createPostRates, setPostRates } =
-  postsSlice.actions;
+export const {
+  setPosts,
+  setPostUserRate,
+  createPostRates,
+  setPostRates,
+  setShowedPage,
+} = postsSlice.actions;
