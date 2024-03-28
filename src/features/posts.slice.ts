@@ -14,6 +14,7 @@ export const getPosts = createAsyncThunk(
 
 const initialState: IState = {
   posts: [],
+  showedPage: "blog",
 };
 
 const postsSlice = createSlice({
