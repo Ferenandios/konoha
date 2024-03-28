@@ -1,22 +1,19 @@
 import { styled } from "styled-components";
 
 export const StyledSVG = styled.svg<{
-  type: "likes" | "dislikes";
+  rateType: "liked" | "disliked";
   userRate: string;
 }>`
   position: relative;
   fill: ${(props) => {
-    switch (props.userRate) {
-      case "liked":
-        return "#219653";
-      case "disliked":
-        return "#EB5757";
-      default:
-        return "#959298";
-    }
+    if (props.rateType === "liked" && props.userRate === "liked")
+      return "#219653";
+    else if (props.rateType === "disliked" && props.userRate === "disliked")
+      return "#EB5757";
+    return "#959298";
   }};
-  top: ${(props) => (props.type === "dislikes" ? "2px" : "")};
+  top: ${(props) => (props.rateType === "disliked" ? "2px" : "")};
   width: 26.67px;
   height: 24px;
-  transform: ${(props) => (props.type === "dislikes" ? "scaleY(-1)" : "")};
+  transform: ${(props) => (props.rateType === "disliked" ? "scaleY(-1)" : "")};
 `;
