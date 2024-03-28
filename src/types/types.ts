@@ -15,9 +15,11 @@ export interface IPost {
   userRate?: userRateType;
 }
 
+export type showedPageType = "blog" | "post";
+
 export interface IState {
   posts: IPost[];
-  showedPage: "blog" | "post";
+  showedPage: showedPageType;
 }
 
 export interface IContentProps {
