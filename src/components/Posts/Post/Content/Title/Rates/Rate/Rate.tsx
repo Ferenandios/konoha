@@ -29,7 +29,7 @@ const Rate: FC<{ rateType: "liked" | "disliked"; postId: number }> = ({
     if (!rates) {
       dispatch(createPostRates(postId));
     }
-  }, []);
+  });
   return (
     <>
       <RateInner>
