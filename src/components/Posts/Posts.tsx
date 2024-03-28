@@ -7,7 +7,7 @@ import { getPosts } from "../../features/posts.slice";
 
 const Posts: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { posts } = useAppSelector((state) => state).posts;
+  const { posts } = useAppSelector((state) => state.posts);
   const [columns, setColumns] = useState<number[][]>([]);
   const getColumns = () => {
     if (!posts) return [[1], [1]];
