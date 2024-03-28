@@ -1,16 +1,14 @@
 import { FC } from "react";
-import Text from "./components/Text/Text";
+import BlogPage from "./components/BlogPage";
+import { useAppSelector } from "./hooks";
 import { GlobalStyle } from "./styles";
-import Search from "./components/Search/Search";
-import Posts from "./components/Posts/Posts";
 
 const App: FC = (): JSX.Element => {
+  const { showedPage } = useAppSelector((state) => state.posts);
   return (
     <>
       <GlobalStyle />
-      <Text />
-      <Search />
-      <Posts />
+      {showedPage === "blog" && <BlogPage />}
     </>
   );
 };
