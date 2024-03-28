@@ -1,26 +1,42 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { RateButton, RateCount, RateInner } from "./Rate.styles";
 import RateIcon from "./RateIcon/RateIcon";
-import { useAppSelector } from "../../../../../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../../hooks";
+import {
+  createPostRates,
+  setPostRates,
+  setPostUserRate,
+} from "../../../../../../../features/posts.slice";
 
-const Rate: FC<{ type: "likes" | "dislikes"; postId: number }> = ({
+const Rate: FC<{ rateType: "liked" | "disliked"; postId: number }> = ({
   postId,
-  type,
+  rateType,
 }): JSX.Element => {
+  const dispatch = useAppDispatch();
   const { userRate } = useAppSelector((state) => state.posts.posts[postId]);
   const { rates } = useAppSelector((state) => state.posts.posts[postId]);
-  const getRandomNumber = () => Math.floor(Math.random() * 51);
-  const count = rates ? rates[type] : getRandomNumber();
   const handleMouseUp = () => {
-    alert(false);
+    dispatch(
+      setPostRates({
+        type: rateType !== userRate ? "add" : "remove",
+        rateType: rateType,
+        postId: postId,
+      })
+    );
+    dispatch(setPostUserRate({ type: rateType, postId: postId }));
   };
+  useEffect(() => {
+    if (!rates) {
+      dispatch(createPostRates(postId));
+    }
+  }, []);
   return (
     <>
       <RateInner>
         <RateButton onMouseUp={handleMouseUp}>
-          <RateIcon type={type} userRate={userRate} />
+          <RateIcon rateType={rateType} userRate={userRate} />
         </RateButton>
-        <RateCount>{count}</RateCount>
+        <RateCount>{rates && rates[rateType]}</RateCount>
       </RateInner>
     </>
   );
