@@ -3,15 +3,15 @@ import { StyledSVG } from "./RateIcon.styles";
 import { type userRateType } from "../../../../../../../../types/types";
 
 const RateIcon: FC<{
-  type: "likes" | "dislikes";
+  rateType: "liked" | "disliked";
   userRate: userRateType | undefined;
-}> = ({ type, userRate }): JSX.Element => {
+}> = ({ rateType, userRate }): JSX.Element => {
   return (
     <StyledSVG
       width="28"
       height="25"
       viewBox="0 0 28 25"
-      type={type}
+      rateType={rateType}
       userRate={`${userRate}`}
       xmlns="http://www.w3.org/2000/svg"
     >
