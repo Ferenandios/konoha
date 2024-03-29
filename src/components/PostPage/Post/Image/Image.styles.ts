@@ -5,7 +5,6 @@ export const ImageAnsoc = styled.div`
   justify-content: center;
   width: 100%;
   height: 477px;
-  margin-bottom: 48px;
 `;
 
 export const StyledImage = styled.img.attrs<{ image: string | undefined }>(
