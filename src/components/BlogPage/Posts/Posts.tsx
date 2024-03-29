@@ -24,7 +24,9 @@ const Posts: FC = (): JSX.Element => {
     setColumns([oddNumbers, evenNumbers]);
   };
   useEffect(() => {
-    dispatch(getPosts());
+    if (!posts.length) {
+      dispatch(getPosts());
+    }
   }, []);
   useEffect(() => {
     getColumns();
