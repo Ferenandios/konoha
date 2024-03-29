@@ -6,6 +6,5 @@ export const TopInner = styled.div`
   align-items: center;
   width: 100%;
   height: 64px;
-  margin-top: 64px;
   margin-bottom: 32px;
 `;
