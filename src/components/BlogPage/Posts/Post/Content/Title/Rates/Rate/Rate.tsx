@@ -16,14 +16,33 @@ const Rate: FC<{ rateType: "liked" | "disliked"; postId: number }> = ({
   const { userRate } = useAppSelector((state) => state.posts.posts[postId]);
   const { rates } = useAppSelector((state) => state.posts.posts[postId]);
   const handleMouseUp = () => {
-    dispatch(
-      setPostRates({
-        type: rateType !== userRate ? "add" : "remove",
-        rateType: rateType,
-        postId: postId,
-      })
-    );
-    dispatch(setPostUserRate({ type: rateType, postId: postId }));
+    if (rateType === userRate) {
+      dispatch(setPostUserRate({ type: null, postId: postId }));
+      dispatch(
+        setPostRates({
+          type: "remove",
+          rateType: rateType,
+          postId: postId,
+        })
+      );
+    } else {
+      dispatch(
+        setPostRates({
+          type: "add",
+          rateType: rateType,
+          postId: postId,
+        })
+      );
+      userRate &&
+        dispatch(
+          setPostRates({
+            type: "remove",
+            rateType: userRate,
+            postId: postId,
+          })
+        );
+      dispatch(setPostUserRate({ type: rateType, postId: postId }));
+    }
   };
   useEffect(() => {
     if (!rates) {
