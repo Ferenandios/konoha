@@ -5,7 +5,6 @@ export const TitleAnsoc = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 48px;
-  margin-bottom: 48px;
 `;
 
 export const StyledTitle = styled.h1`
