@@ -20,6 +20,7 @@ export type showedPageType = "blog" | "post";
 export interface IState {
   posts: IPost[];
   showedPage: showedPageType;
+  currentPost: number | null;
 }
 
 export interface IContentProps {
