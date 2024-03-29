@@ -1,5 +1,5 @@
 import { FC } from "react";
-import BlogPage from "./components/BlogPage";
+import BlogPage from "./components/BlogPage/BlogPage";
 import { useAppSelector } from "./hooks";
 import { GlobalStyle } from "./styles";
 import PostPage from "./components/PostPage/PostPage";
