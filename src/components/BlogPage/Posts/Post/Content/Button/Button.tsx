@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { ButtonInner, StyledButton } from "./Button.styles";
-import Rates from "../Title/Rates/Rates";
 import { useAppDispatch } from "../../../../../../hooks";
 import {
   setCurrentPost,
   setShowedPage,
 } from "../../../../../../features/posts.slice";
+import Rates from "../../../../../Rates/Rates";
 
 const Button: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   const dispatch = useAppDispatch();
