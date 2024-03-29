@@ -2,12 +2,16 @@ import { FC } from "react";
 import { ButtonInner, StyledButton } from "./Button.styles";
 import Rates from "../Title/Rates/Rates";
 import { useAppDispatch } from "../../../../../../hooks";
-import { setShowedPage } from "../../../../../../features/posts.slice";
+import {
+  setCurrentPost,
+  setShowedPage,
+} from "../../../../../../features/posts.slice";
 
 const Button: FC<{ postId: number }> = ({ postId }): JSX.Element => {
   const dispatch = useAppDispatch();
   const handleMouseUp = () => {
     dispatch(setShowedPage("post"));
+    dispatch(setCurrentPost(postId));
   };
   return (
     <>
