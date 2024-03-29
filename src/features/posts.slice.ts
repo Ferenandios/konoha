@@ -19,6 +19,7 @@ export const getPosts = createAsyncThunk(
 const initialState: IState = {
   posts: [],
   showedPage: "post",
+  currentPost: null,
 };
 
 const postsSlice = createSlice({
@@ -62,6 +63,9 @@ const postsSlice = createSlice({
     setShowedPage: (state, action: PayloadAction<showedPageType>) => {
       state.showedPage = action.payload;
     },
+    setCurrentPost: (state, action: PayloadAction<number>) => {
+      state.currentPost = action.payload;
+    },
   },
 });
 
@@ -72,4 +76,5 @@ export const {
   createPostRates,
   setPostRates,
   setShowedPage,
+  setCurrentPost,
 } = postsSlice.actions;
