@@ -1,14 +1,18 @@
 import { FC } from "react";
 import StyledButton, { ShapeIcon, StyledAnsoc } from "./Button.styles";
+import { useAppDispatch, useAppSelector } from "../../../../../hooks";
+import { setFilteredPosts } from "../../../../../features/posts.slice";
 
 const Button: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { posts, search } = useAppSelector((state) => state.posts);
   const handleClick = () => {
-    alert(true);
+    dispatch(setFilteredPosts(posts.filter((post) => post.title === search)));
   };
   return (
     <>
       <StyledAnsoc>
-        <StyledButton onClick={handleClick}>
+        <StyledButton onMouseUp={handleClick}>
           <ShapeIcon />
         </StyledButton>
       </StyledAnsoc>
