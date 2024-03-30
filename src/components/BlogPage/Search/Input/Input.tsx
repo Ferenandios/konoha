@@ -1,31 +1,30 @@
-import { FC, useEffect, useState } from "react";
-import { useAppSelector } from "../../../../hooks";
+import { FC } from "react";
+import { setFilteredPosts, setSearch } from "../../../../features/posts.slice";
+import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import Button from "./Button/Button";
 import TextInput, { StyledDiv } from "./Input.styles";
 
 const Input: FC = (): JSX.Element => {
-  const { posts } = useAppSelector((state) => state.posts);
-  const [search, setSearch] = useState("");
-
-  const [filteredPosts, setFilterPosts] = useState(posts);
-
-  useEffect(() => {
-    setFilterPosts(posts.filter((post) => post.title === search));
-  }, [search, posts]);
+  const dispatch = useAppDispatch();
+  const { search, posts } = useAppSelector((state) => state.posts);
   return (
     <>
       <StyledDiv>
         <TextInput
           value={search}
           onChange={(event) => {
-            setSearch(event.target.value);
+            if (event.target.value === "") {
+              dispatch(setFilteredPosts([]));
+            }
+            dispatch(setSearch(event.target.value));
+          }}
+          onKeyUp={(event: KeyboardEvent) => {
+            if (event.key !== "Enter") return;
+            dispatch(
+              setFilteredPosts(posts.filter((post) => post.title === search))
+            );
           }}
         />
-        <div>
-          {!filteredPosts.length
-            ? posts.map((post) => <h3>{post.title}</h3>)
-            : filteredPosts.map((post) => <h3>{post.title}</h3>)}
-        </div>
         <Button />
       </StyledDiv>
     </>
