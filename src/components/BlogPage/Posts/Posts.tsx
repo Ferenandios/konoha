@@ -7,7 +7,7 @@ import { getPosts } from "../../../features/posts.slice";
 
 const Posts: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { posts } = useAppSelector((state) => state.posts);
+  const { filteredPosts, posts } = useAppSelector((state) => state.posts);
   const [columns, setColumns] = useState<number[][]>([]);
   const getColumns = () => {
     if (!posts) return [[1], [1]];
@@ -36,16 +36,26 @@ const Posts: FC = (): JSX.Element => {
       <section>
         <GlobalContainer>
           <StyledInner>
-            {posts.length && <Post postId={0} />}
-            <PostColumns>
-              {columns.map((column, index) => (
-                <PostColumn key={index}>
-                  {column.map((postId) => (
-                    <Post key={postId} postId={postId} />
+            {!filteredPosts.length ? (
+              <>
+                {posts.length && <Post postId={0} />}
+                <PostColumns>
+                  {columns.map((column, index) => (
+                    <PostColumn key={index}>
+                      {column.map((postId) => (
+                        <Post key={postId} postId={postId} />
+                      ))}
+                    </PostColumn>
                   ))}
-                </PostColumn>
-              ))}
-            </PostColumns>
+                </PostColumns>
+              </>
+            ) : (
+              <>
+                {filteredPosts.map((post) => (
+                  <Post postId={post.id - 1} />
+                ))}
+              </>
+            )}
           </StyledInner>
         </GlobalContainer>
       </section>
