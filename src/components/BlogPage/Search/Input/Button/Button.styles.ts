@@ -10,6 +10,7 @@ export const StyledAnsoc = styled.div`
 `;
 
 const StyledButton = styled.button`
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
