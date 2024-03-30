@@ -20,6 +20,8 @@ const initialState: IState = {
   posts: [],
   showedPage: "post",
   currentPost: null,
+  filteredPosts: [],
+  search: "",
 };
 
 const postsSlice = createSlice({
@@ -66,6 +68,12 @@ const postsSlice = createSlice({
     setCurrentPost: (state, action: PayloadAction<number>) => {
       state.currentPost = action.payload;
     },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    setFilteredPosts: (state, action: PayloadAction<IPost[]>) => {
+      state.filteredPosts = action.payload;
+    },
   },
 });
 
@@ -77,4 +85,6 @@ export const {
   setPostRates,
   setShowedPage,
   setCurrentPost,
+  setSearch,
+  setFilteredPosts,
 } = postsSlice.actions;
