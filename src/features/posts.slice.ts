@@ -18,7 +18,7 @@ export const getPosts = createAsyncThunk(
 
 const initialState: IState = {
   posts: [],
-  showedPage: "post",
+  showedPage: "blog",
   currentPost: null,
   search: "",
 };
@@ -46,12 +46,13 @@ const postsSlice = createSlice({
         postId: number;
       }>
     ) => {
-      if (!("rates" in state.posts[payload.postId])) return;
-      if (!(payload.rateType in state.posts[payload.postId].rates)) return;
-      if (payload.type === "add") {
-        state.posts[payload.postId].rates[payload.rateType] += 1;
-      } else if (payload.type === "remove") {
-        state.posts[payload.postId].rates[payload.rateType] -= 1;
+      const post = state.posts.find((post) => post.id === payload.postId);
+      if (post && post.rates && payload.rateType in post.rates) {
+        if (payload.type === "add") {
+          post.rates[payload.rateType] += 1;
+        } else if (payload.type === "remove") {
+          post.rates[payload.rateType] -= 1;
+        }
       }
     },
     createPostRates: (state, action: PayloadAction<number>) => {
@@ -70,9 +71,6 @@ const postsSlice = createSlice({
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
-    setFilteredPosts: (state, action: PayloadAction<IPost[]>) => {
-      state.filteredPosts = action.payload;
-    },
   },
 });
 
@@ -85,5 +83,4 @@ export const {
   setShowedPage,
   setCurrentPost,
   setSearch,
-  setFilteredPosts,
 } = postsSlice.actions;
