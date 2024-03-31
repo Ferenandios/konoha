@@ -22,7 +22,6 @@ export interface IState {
   showedPage: showedPageType;
   currentPost: number | null;
   search: string;
-  filteredPosts: IPost[];
 }
 
 export interface IContentProps {
