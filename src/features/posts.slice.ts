@@ -46,7 +46,7 @@ const postsSlice = createSlice({
         postId: number;
       }>
     ) => {
-      const post = state.posts.find((post) => post.id === payload.postId);
+      const post = state.posts[payload.postId];
       if (post && post.rates && payload.rateType in post.rates) {
         if (payload.type === "add") {
           post.rates[payload.rateType] += 1;
