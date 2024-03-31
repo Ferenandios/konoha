@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import searchAsset from "/src/assets/Search.svg";
 
 export const StyledAnsoc = styled.div`
   position: absolute;
@@ -22,7 +23,7 @@ const StyledButton = styled.button`
 `;
 
 export const ShapeIcon = styled.img.attrs({
-  src: "/src/assets/Search.svg",
+  src: searchAsset,
   alt: "Search",
 })`
   width: 18.01px;
