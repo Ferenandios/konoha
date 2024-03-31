@@ -4,6 +4,7 @@ export const StyledSVG = styled.svg<{
   rateType: "liked" | "disliked";
   userRate: string;
 }>`
+  cursor: pointer;
   position: relative;
   fill: ${(props) => {
     if (props.rateType === "liked" && props.userRate === "liked")
