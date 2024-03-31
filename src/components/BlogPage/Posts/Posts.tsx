@@ -14,7 +14,7 @@ const Posts: FC = (): JSX.Element => {
     search === "" ? post : post.title === search
   );
   const getColumns = () => {
-    if (!posts) return;
+    if (!posts.length) return;
     const oddPosts: IPost[] = [];
     const evenPosts: IPost[] = [];
 
@@ -40,28 +40,32 @@ const Posts: FC = (): JSX.Element => {
       <section>
         <GlobalContainer>
           <StyledInner>
-            {(!search || search === posts[0].title) && <Post postId={0} />}
-            <PostColumns>
-              {filteredPosts.length ? (
-                <>
-                  {columns.map((column, index) => (
-                    <PostColumn key={index}>
-                      {column
-                        .filter((post) =>
-                          search === "" ? post : post.title === search
-                        )
-                        .map((post) => (
-                          <Post key={post.id} postId={post.id - 1} />
-                        ))}
-                    </PostColumn>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <h3>No post found</h3>
-                </>
-              )}
-            </PostColumns>
+            {posts[0] !== undefined && (
+              <>
+                {(!search || search === posts[0].title) && <Post postId={0} />}
+                <PostColumns>
+                  {filteredPosts.length ? (
+                    <>
+                      {columns.map((column, index) => (
+                        <PostColumn key={index}>
+                          {column
+                            .filter((post) =>
+                              search === "" ? post : post.title === search
+                            )
+                            .map((post) => (
+                              <Post key={post.id} postId={post.id - 1} />
+                            ))}
+                        </PostColumn>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <h3>No post found</h3>
+                    </>
+                  )}
+                </PostColumns>
+              </>
+            )}
           </StyledInner>
         </GlobalContainer>
       </section>
