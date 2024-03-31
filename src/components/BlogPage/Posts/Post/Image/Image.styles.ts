@@ -10,9 +10,7 @@ export const ImageAnsoc = styled.div`
 
 export const PostImage = styled.img.attrs<{ image: string | undefined }>(
   (props) => ({
-    src: props.image
-      ? props.image
-      : "https://media1.tenor.com/m/I_QTwoqts0IAAAAC/mellstroy.gif" /*"https://placehold.co/1140x600"*/,
+    src: props.image ? props.image : "https://placehold.co/1140x600",
     alt: "Post Image",
   })
 )`
