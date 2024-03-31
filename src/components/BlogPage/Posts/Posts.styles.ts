@@ -14,7 +14,7 @@ export const StyledInner = styled.div`
 export const PostColumns = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  max-width: 100%;
   gap: 24px;
 `;
 
