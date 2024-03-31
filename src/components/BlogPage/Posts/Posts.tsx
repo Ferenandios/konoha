@@ -4,24 +4,28 @@ import { GlobalContainer } from "../../../styles";
 import { PostColumn, PostColumns, StyledInner } from "./Posts.styles";
 import Post from "./Post/Post";
 import { getPosts } from "../../../features/posts.slice";
+import { IPost } from "../../../types/types";
 
 const Posts: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { filteredPosts, posts } = useAppSelector((state) => state.posts);
-  const [columns, setColumns] = useState<number[][]>([]);
+  const { posts, search } = useAppSelector((state) => state.posts);
+  const [columns, setColumns] = useState<IPost[][]>([]);
+  const filteredPosts = posts.filter((post) =>
+    search === "" ? post : post.title === search
+  );
   const getColumns = () => {
-    if (!posts) return [[1], [1]];
-    const oddNumbers: number[] = [];
-    const evenNumbers: number[] = [];
+    if (!posts) return;
+    const oddPosts: IPost[] = [];
+    const evenPosts: IPost[] = [];
 
     for (let i = 1; i < posts.length; i++) {
       if (i % 2 !== 0) {
-        oddNumbers.push(i);
+        oddPosts.push(posts[i]);
       } else if (i !== 0) {
-        evenNumbers.push(i);
+        evenPosts.push(posts[i]);
       }
     }
-    setColumns([oddNumbers, evenNumbers]);
+    setColumns([oddPosts, evenPosts]);
   };
   useEffect(() => {
     if (!posts.length) {
@@ -36,26 +40,28 @@ const Posts: FC = (): JSX.Element => {
       <section>
         <GlobalContainer>
           <StyledInner>
-            {!filteredPosts.length ? (
-              <>
-                {posts.length && <Post postId={0} />}
-                <PostColumns>
+            {(!search || search === posts[0].title) && <Post postId={0} />}
+            <PostColumns>
+              {filteredPosts.length ? (
+                <>
                   {columns.map((column, index) => (
                     <PostColumn key={index}>
-                      {column.map((postId) => (
-                        <Post key={postId} postId={postId} />
-                      ))}
+                      {column
+                        .filter((post) =>
+                          search === "" ? post : post.title === search
+                        )
+                        .map((post) => (
+                          <Post key={post.id} postId={post.id - 1} />
+                        ))}
                     </PostColumn>
                   ))}
-                </PostColumns>
-              </>
-            ) : (
-              <>
-                {filteredPosts.map((post) => (
-                  <Post postId={post.id - 1} />
-                ))}
-              </>
-            )}
+                </>
+              ) : (
+                <>
+                  <h3>No post found</h3>
+                </>
+              )}
+            </PostColumns>
           </StyledInner>
         </GlobalContainer>
       </section>
