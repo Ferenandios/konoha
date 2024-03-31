@@ -20,7 +20,6 @@ const initialState: IState = {
   posts: [],
   showedPage: "post",
   currentPost: null,
-  filteredPosts: [],
   search: "",
 };
 
