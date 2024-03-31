@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { StyledSVG } from "./RateIcon.styles";
-import { type userRateType } from "../../../../../../../../types/types";
+import { userRateType } from "../../../../types/types";
 
 const RateIcon: FC<{
   rateType: "liked" | "disliked";
